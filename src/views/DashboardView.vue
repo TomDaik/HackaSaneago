@@ -60,8 +60,8 @@
         </div>
         
         <div class="flex items-end justify-between h-48 pt-4 px-4">
-          <div v-for="mes in historicoEconomia" :key="mes.nome" class="flex flex-col items-center flex-1 group">
-            <div class="w-12 bg-emerald-100 group-hover:bg-emerald-500 transition-colors duration-200 rounded-t-lg relative" :style="{ height: mes.porcentagem + '%' }">
+          <div v-for="mes in historicoEconomia" :key="mes.nome" class="flex flex-col items-center flex-1 group h-full justify-end">
+            <div class="w-12 bg-emerald-100 group-hover:bg-emerald-500 transition-colors duration-200 rounded-t-lg relative animate-fade-in" :style="{ height: mes.porcentagem + '%' }">
               <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
                 R$ {{ mes.valor }}
               </span>
