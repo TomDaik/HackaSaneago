@@ -84,7 +84,7 @@
                   {{ item.prazo }}
                 </td>
                 <td class="py-3">
-                  <span :class="['px-2.5 py-1 rounded-full font-bold text-[10px]', item.statusClass]">
+                  <span :class="['inline-block whitespace-nowrap px-2.5 py-1 rounded-full font-bold text-[10px]', item.statusClass]">
                     {{ item.status }}
                   </span>
                 </td>
