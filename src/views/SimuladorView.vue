@@ -81,7 +81,7 @@
 
       <div class="lg:col-span-2 flex flex-col gap-6">
         
-        <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-2xl shadow-md flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div class="bg-slate-900 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 sm:p-6 rounded-2xl shadow-md flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
           <div>
             <p class="text-xs font-bold uppercase tracking-wider text-rose-400">Sua Economia Estimada</p>
             <h2 class="text-4xl font-black mt-1 text-white">R$ {{ economiaTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) }}</h2>
