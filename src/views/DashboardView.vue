@@ -53,37 +53,65 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Tabela de Monitoramento de Condicionantes Legais -->
+      <!-- Seção de Condicionantes Legais -->
       <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 lg:col-span-2">
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-6">
           <div>
             <h3 class="text-lg font-bold text-slate-900">Condicionantes da Licença de Operação (LO)</h3>
             <p class="text-xs text-slate-400">Controle tempestivo de prazos e evidências ambientais</p>
           </div>
-          <span class="text-xs bg-slate-100 text-slate-600 font-bold px-3 py-1 rounded-lg">LO Nº 4892/2022</span>
+          <span class="text-xs bg-slate-100 text-slate-600 font-bold px-3 py-1 rounded-lg self-start sm:self-auto">
+            LO Nº 4892/2022
+          </span>
         </div>
-        
-        <div class="overflow-x-auto">
+
+        <!-- 1. Versão Mobile: Cards Empilhados (Visível apenas em telas menores que md) -->
+        <div class="block md:hidden space-y-3">
+          <div 
+            v-for="item in condicionantes" 
+            :key="'mobile-' + item.id" 
+            class="p-4 bg-slate-50/80 rounded-xl border border-slate-100 flex flex-col gap-2.5"
+          >
+            <div class="flex justify-between items-center gap-2">
+              <span class="text-[11px] text-slate-400 font-mono font-bold">{{ item.codigo }}</span>
+              <span :class="['inline-block whitespace-nowrap px-2.5 py-1 rounded-full font-bold text-[10px]', item.statusClass]">
+                {{ item.status }}
+              </span>
+            </div>
+            
+            <p class="text-xs font-bold text-slate-800 leading-snug">{{ item.titulo }}</p>
+
+            <div class="flex justify-between items-center text-[11px] pt-2.5 border-t border-slate-200/60 text-slate-500">
+              <span class="truncate max-w-[140px]">👤 {{ item.responsavel }}</span>
+              <span class="font-semibold shrink-0" :class="item.prazoAlerta ? 'text-amber-600' : 'text-slate-700'">
+                ⏳ {{ item.prazo }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Versão Desktop: Tabela Tradicional (Visível a partir de md) -->
+        <div class="hidden md:block overflow-x-auto">
           <table class="w-full text-left text-xs">
             <thead>
-              <tr class="border-b border-slate-100 text-slate-400 font-semibold uppercase">
-                <th class="pb-3">Condicionante / Obrigação</th>
-                <th class="pb-3">Responsável</th>
-                <th class="pb-3">Prazo</th>
-                <th class="pb-3">Status</th>
+              <tr class="border-b border-slate-100 text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
+                <th class="pb-3 pr-4">Condicionante / Obrigação</th>
+                <th class="pb-3 px-3">Responsável</th>
+                <th class="pb-3 px-3 whitespace-nowrap">Prazo</th>
+                <th class="pb-3 pl-3 text-right">Status</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-50">
-              <tr v-for="item in condicionantes" :key="item.id" class="hover:bg-slate-50/50">
-                <td class="py-3 font-medium text-slate-800">
+              <tr v-for="item in condicionantes" :key="'desk-' + item.id" class="hover:bg-slate-50/50">
+                <td class="py-3.5 pr-4 font-medium text-slate-800">
                   {{ item.titulo }}
-                  <span class="block text-[10px] text-slate-400 font-mono">{{ item.codigo }}</span>
+                  <span class="block text-[10px] text-slate-400 font-mono mt-0.5">{{ item.codigo }}</span>
                 </td>
-                <td class="py-3 text-slate-600">{{ item.responsavel }}</td>
-                <td class="py-3 font-semibold" :class="item.prazoAlerta ? 'text-amber-600' : 'text-slate-700'">
+                <td class="py-3.5 px-3 text-slate-600 whitespace-nowrap">{{ item.responsavel }}</td>
+                <td class="py-3.5 px-3 font-semibold whitespace-nowrap" :class="item.prazoAlerta ? 'text-amber-600' : 'text-slate-700'">
                   {{ item.prazo }}
                 </td>
-                <td class="py-3">
+                <td class="py-3.5 pl-3 text-right">
                   <span :class="['inline-block whitespace-nowrap px-2.5 py-1 rounded-full font-bold text-[10px]', item.statusClass]">
                     {{ item.status }}
                   </span>
