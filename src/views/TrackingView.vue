@@ -40,15 +40,22 @@
 
     <!-- Detalhe da Evidência e Rastreamento -->
     <div class="w-full lg:w-7/12 flex flex-col gap-6">
-      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex justify-between items-center">
-        <div>
-          <div class="flex items-center gap-2">
-            <h2 class="text-xl font-bold text-slate-900">{{ truckSelecionado.mtr }}</h2>
-            <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-medium">Regular (PNRS)</span>
+      <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div class="w-full sm:w-auto">
+          <div class="flex flex-wrap items-center gap-2">
+            <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight whitespace-nowrap">
+              {{ truckSelecionado.mtr }}
+            </h2>
+            <span class="inline-block whitespace-nowrap text-[11px] bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-md">
+              Regular (PNRS)
+            </span>
           </div>
-          <p class="text-xs text-slate-400 mt-0.5">Transportador Homologado: {{ truckSelecionado.transportadora }} (LO SEMAD Ativa)</p>
+          <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+            Transportador Homologado: <span class="font-medium text-slate-700">{{ truckSelecionado.transportadora }}</span> (LO SEMAD Ativa)
+          </p>
         </div>
-        <button class="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors">
+        
+        <button class="w-full sm:w-auto shrink-0 px-4 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors shadow-sm text-center">
           Baixar MTR (PDF)
         </button>
       </div>
