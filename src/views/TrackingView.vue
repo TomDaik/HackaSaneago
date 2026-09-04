@@ -85,16 +85,34 @@
       </div>
 
       <!-- Relatório Fotográfico de Carga -->
-      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Relatório Fotográfico de Vedação e Lacre</h3>
-        <div class="grid grid-cols-3 gap-4">
-          <div v-for="i in 2" :key="i" class="aspect-video bg-slate-100 rounded-xl border border-slate-200 flex flex-col items-center justify-center p-2 text-center">
-            <span class="text-xs font-semibold text-slate-600">Foto_Lacre_Cacamba_{{ i }}.jpg</span>
-            <span class="text-[10px] text-emerald-600 font-bold mt-1">Validado na Saída</span>
+      <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
+          Relatório Fotográfico de Vedação e Lacre
+        </h3>
+
+        <!-- grid-cols-1 no celular estreito, grid-cols-2 em telas médias/celulares maiores e grid-cols-3 no desktop -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div 
+            v-for="i in 2" 
+            :key="i" 
+            class="min-h-[85px] py-3 px-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col items-center justify-center text-center overflow-hidden"
+          >
+            <!-- Ícone + Nome do arquivo com truncamento seguro -->
+            <div class="flex items-center gap-1.5 max-w-full">
+              <span class="text-sm shrink-0">📷</span>
+              <span class="text-xs font-semibold text-slate-700 truncate" :title="'Foto_Lacre_Cacamba_' + i + '.jpg'">
+                Foto_Lacre_Cacamba_{{ i }}.jpg
+              </span>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md mt-2 shrink-0">
+              ✓ Validado na Saída
+            </span>
           </div>
-          <button class="aspect-video border-2 border-dashed border-slate-200 rounded-xl flex flex-col items-center justify-center text-slate-400 hover:border-slate-400 transition-colors">
-            <span class="text-base font-bold">+</span>
-            <span class="text-[10px]">Anexar Evidência</span>
+
+          <!-- Botão de Anexar Evidência -->
+          <button class="min-h-[85px] py-3 px-4 border-2 border-dashed border-slate-200 hover:border-slate-300 rounded-xl flex flex-col items-center justify-center text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-all">
+            <span class="text-lg font-bold leading-none">+</span>
+            <span class="text-xs font-semibold mt-1">Anexar Evidência</span>
           </button>
         </div>
       </div>
